@@ -25,12 +25,19 @@ public class USERcontents extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton9 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+
+        jButton9.setText("logout");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,13 +71,6 @@ public class USERcontents extends javax.swing.JFrame {
             }
         });
 
-        jButton9.setText("logout");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,10 +86,8 @@ public class USERcontents extends javax.swing.JFrame {
                             .addComponent(jButton1)
                             .addComponent(jButton4)
                             .addComponent(jButton5)
-                            .addComponent(jButton7))
-                        .addGap(269, 269, 269)
-                        .addComponent(jButton9)))
-                .addContainerGap(162, Short.MAX_VALUE))
+                            .addComponent(jButton7))))
+                .addContainerGap(345, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,14 +100,9 @@ public class USERcontents extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addGap(31, 31, 31)
                 .addComponent(jButton5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton7)))
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(jButton7)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         pack();
