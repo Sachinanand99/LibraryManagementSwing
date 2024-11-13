@@ -7,12 +7,12 @@
  *
  * @author raman
  */
-public class removebookfromwishlist extends javax.swing.JFrame {
+public class removeBookFromWishlist extends javax.swing.JFrame {
 
     /**
      * Creates new form removebookfromwishlist
      */
-    public removebookfromwishlist() {
+    public removeBookFromWishlist() {
         initComponents();
     }
 
@@ -68,20 +68,21 @@ public class removebookfromwishlist extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(removebookfromwishlist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(removeBookFromWishlist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(removebookfromwishlist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(removeBookFromWishlist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(removebookfromwishlist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(removeBookFromWishlist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(removebookfromwishlist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(removeBookFromWishlist.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new removebookfromwishlist().setVisible(true);
+                new removeBookFromWishlist().setVisible(true);
             }
         });
     }
