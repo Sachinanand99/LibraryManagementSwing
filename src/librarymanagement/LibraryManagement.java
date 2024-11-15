@@ -18,7 +18,9 @@ public class LibraryManagement {
         // TODO code application logic here
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mainPage().setVisible(true);
+                MainPage page = new MainPage();
+                page.setVisible(true);
+                page.setLocationRelativeTo(null);// centres the frame on the screen
             }
         });
     }
