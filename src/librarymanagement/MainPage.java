@@ -2,7 +2,10 @@ package librarymanagement;
 
 
 import java.awt.Color;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 
 /*
@@ -41,6 +44,7 @@ public class MainPage extends javax.swing.JFrame {
         registerButton = new javax.swing.JButton();
         adminLoginButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        initDBButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 0, 0));
@@ -102,6 +106,14 @@ public class MainPage extends javax.swing.JFrame {
         jLabel2.setPreferredSize(new java.awt.Dimension(800, 500));
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 570, 430));
 
+        initDBButton.setText("Setup Database");
+        initDBButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                initDBButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(initDBButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,6 +128,7 @@ public class MainPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void adminLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLoginButtonActionPerformed
          // TODO add your handling code here:
          AdminLogin adminLogin = new AdminLogin();
@@ -145,6 +158,33 @@ public class MainPage extends javax.swing.JFrame {
          Reges.setLocationRelativeTo(null);// centres the frame on the screen
          this.dispose();
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void initDBButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initDBButtonActionPerformed
+        // TODO add your handling code here:
+        String driver = "com.mysql.cj.jdbc.Driver";
+
+        try{
+        Class.forName(driver);// A call to forName("X") causes the class named X to be initialized.
+            
+        //DriverManager.getConnection returns a connection to the URL
+        try(
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+        Statement st = con.createStatement();
+                ){
+        st.executeUpdate("CREATE TABLE IF NOT EXISTS Users (UserID INT PRIMARY KEY AUTO_INCREMENT, Username VARCHAR(50) NOT NULL, Password VARCHAR(50) NOT NULL, Email VARCHAR(100) UNIQUE NOT NULL, UserRole ENUM('admin', 'user') NOT NULL, RegistrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
+        st.executeUpdate("CREATE TABLE IF NOT EXISTS Books (BookID INT PRIMARY KEY AUTO_INCREMENT, Title VARCHAR(100) NOT NULL, Author VARCHAR(100), Publisher VARCHAR(100), ISBN VARCHAR(20) UNIQUE, Quantity INT DEFAULT 1, Available INT DEFAULT 1, AddedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
+        st.executeUpdate("CREATE TABLE IF NOT EXISTS Wishlist (WishlistID INT PRIMARY KEY AUTO_INCREMENT, UserID INT, BookID INT, AddedDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (UserID) REFERENCES Users(UserID), FOREIGN KEY (BookID) REFERENCES Books(BookID))");
+        st.executeUpdate("CREATE TABLE IF NOT EXISTS IssuedBooks (IssueID INT PRIMARY KEY AUTO_INCREMENT, UserID INT, BookID INT, IssueDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, DueDate DATE, ReturnDate TIMESTAMP NULL, Fine DECIMAL(5, 2) DEFAULT 0.00, FOREIGN KEY (UserID) REFERENCES Users(UserID), FOREIGN KEY (BookID) REFERENCES Books(BookID))");
+        st.executeUpdate("CREATE TABLE IF NOT EXISTS Fines (FineID INT PRIMARY KEY AUTO_INCREMENT, UserID INT, IssueID INT, Amount DECIMAL(5, 2) NOT NULL, Paid BOOLEAN DEFAULT FALSE, FineDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (UserID) REFERENCES Users(UserID), FOREIGN KEY (IssueID) REFERENCES IssuedBooks(IssueID))");
+        JOptionPane.showMessageDialog(rootPane, "Tables created successfully");
+        }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+                    JOptionPane.showMessageDialog(rootPane, "Error creating tables"+ e.getMessage());
+
+        }
+    }//GEN-LAST:event_initDBButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +230,7 @@ public class MainPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminLoginButton;
+    private javax.swing.JButton initDBButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
