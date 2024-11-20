@@ -43,19 +43,18 @@ public class MainPage extends javax.swing.JFrame {
         userLoginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         adminLoginButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         initDBButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 0, 0));
 
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Algerian", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LibraryIcon.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/book (3).png"))); // NOI18N
         jLabel1.setText("LIBRARY MANAGEMENT ");
         jLabel1.setToolTipText("");
         jLabel1.setAlignmentY(0.9F);
@@ -67,10 +66,9 @@ public class MainPage extends javax.swing.JFrame {
         jLabel1.setName(""); // NOI18N
         jLabel1.setOpaque(true);
         jLabel1.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 364, 60));
 
-        userLoginButton.setBackground(new java.awt.Color(0, 153, 204));
         userLoginButton.setFont(new java.awt.Font("Calisto MT", 1, 18)); // NOI18N
+        userLoginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login-avatar.png"))); // NOI18N
         userLoginButton.setText("USER LOGIN");
         userLoginButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         userLoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -78,10 +76,10 @@ public class MainPage extends javax.swing.JFrame {
                 userLoginButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(userLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 165, 69));
 
         registerButton.setBackground(new java.awt.Color(242, 242, 242));
         registerButton.setFont(new java.awt.Font("Trebuchet MS", 3, 12)); // NOI18N
+        registerButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/register.png"))); // NOI18N
         registerButton.setText("REGISTER");
         registerButton.setBorderPainted(false);
         registerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -89,10 +87,9 @@ public class MainPage extends javax.swing.JFrame {
                 registerButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(registerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 124, -1));
 
-        adminLoginButton.setBackground(new java.awt.Color(0, 153, 204));
         adminLoginButton.setFont(new java.awt.Font("Calisto MT", 1, 18)); // NOI18N
+        adminLoginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login-avatar.png"))); // NOI18N
         adminLoginButton.setText("ADMIN LOGIN");
         adminLoginButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         adminLoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,11 +97,6 @@ public class MainPage extends javax.swing.JFrame {
                 adminLoginButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(adminLoginButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 168, 71));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/MainPage.jpg"))); // NOI18N
-        jLabel2.setPreferredSize(new java.awt.Dimension(800, 500));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 570, 430));
 
         initDBButton.setText("Setup Database");
         initDBButton.addActionListener(new java.awt.event.ActionListener() {
@@ -112,17 +104,60 @@ public class MainPage extends javax.swing.JFrame {
                 initDBButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(initDBButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 310, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(299, 299, 299)
+                .addComponent(adminLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(299, 299, 299)
+                .addComponent(userLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(156, 156, 156)
+                .addComponent(initDBButton))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(339, 339, 339)
+                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(206, 206, 206))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(adminLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(initDBButton)))
+                .addGap(51, 51, 51)
+                .addComponent(registerButton)
+                .addContainerGap(56, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -232,7 +267,6 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton adminLoginButton;
     private javax.swing.JButton initDBButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton registerButton;
     private javax.swing.JButton userLoginButton;
