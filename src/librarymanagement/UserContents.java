@@ -334,6 +334,11 @@ public class UserContents extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back (1).png"))); // NOI18N
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout exploreBooksLayout = new javax.swing.GroupLayout(exploreBooks);
         exploreBooks.setLayout(exploreBooksLayout);
@@ -564,6 +569,16 @@ public class UserContents extends javax.swing.JFrame {
         addbooktowishlist.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_addBooktoWishlistButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        UserContents usercontents=new UserContents();
+        usercontents.setVisible(true);
+        usercontents.pack();
+         usercontents.setLocationRelativeTo(null);
+         this.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
