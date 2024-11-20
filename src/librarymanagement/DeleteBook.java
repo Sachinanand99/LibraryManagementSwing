@@ -1,10 +1,14 @@
 package librarymanagement;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author raman
@@ -46,7 +50,7 @@ public class DeleteBook extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("BOOK ID");
+        jLabel2.setText("BOOK ISBN");
 
         bookIDText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +61,11 @@ public class DeleteBook extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/submit (4).png"))); // NOI18N
         jButton1.setText("SUBMIT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back (1).png"))); // NOI18N
@@ -134,12 +143,39 @@ public class DeleteBook extends javax.swing.JFrame {
         adm.setVisible(true);
         adm.setLocationRelativeTo(null);
         this.dispose();
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void bookIDTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookIDTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bookIDTextActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+            System.out.println("Connection String is: " + con.toString());
+
+            String query = "delete from books where (isbn=?)";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, bookIDText.getText());
+            int val = pst.executeUpdate();
+            System.out.println("Query executed, rows affected: " + val);
+
+            pst.close();
+            con.close();
+
+            // After adding book
+            JOptionPane.showMessageDialog(rootPane, "Book deleted!");
+       
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

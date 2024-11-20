@@ -1,5 +1,12 @@
 package librarymanagement;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,8 +21,33 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
     /**
      * Creates new form VIEWISSUEDBOOKS
      */
+    public void populateIssuedBooks(){
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+            String query = "select * from issuebooks;";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery(query);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing data
+            while (rs.next()) {
+                String isbn = rs.getString("isbn");
+                String username = rs.getString("username");
+                String period = rs.getString("period");
+                String issueDate = rs.getString("issue_date");
+//add into table fields
+                Object[] row = {isbn, username, period, issueDate};
+                model.addRow(row);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error : " + e.getMessage());
+        }
+    }
     public ViewIssuedBooks() {
         initComponents();
+        populateIssuedBooks();
     }
 
     /**
@@ -56,7 +88,7 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Book Title", "Author", "publisher", "ISSUE DATE"
+                "Book ISBN", "User", "Period", "Issue Date"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

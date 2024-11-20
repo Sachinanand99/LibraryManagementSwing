@@ -48,6 +48,7 @@ public class AdminContents extends javax.swing.JFrame {
         issueBookButton = new javax.swing.JButton();
         listAvailableBooksButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        returnBooksButton = new javax.swing.JButton();
 
         adminpage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -243,6 +244,16 @@ public class AdminContents extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Manage books");
 
+        returnBooksButton.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
+        returnBooksButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
+        returnBooksButton.setText("        RETURN BOOK");
+        returnBooksButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        returnBooksButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                returnBooksButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout bookmanagementpanelLayout = new javax.swing.GroupLayout(bookmanagementpanel);
         bookmanagementpanel.setLayout(bookmanagementpanelLayout);
         bookmanagementpanelLayout.setHorizontalGroup(
@@ -255,9 +266,11 @@ public class AdminContents extends javax.swing.JFrame {
                     .addGroup(bookmanagementpanelLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                            .addComponent(deleteBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(issueBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(returnBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                            .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                                .addComponent(deleteBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(issueBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(listAllBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -282,7 +295,9 @@ public class AdminContents extends javax.swing.JFrame {
                 .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listAvailableBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(issueBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(returnBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -419,6 +434,15 @@ public class AdminContents extends javax.swing.JFrame {
 
     }//GEN-LAST:event_removeFineButtonActionPerformed
 
+    private void returnBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBooksButtonActionPerformed
+        // TODO add your handling code here:
+        ReturnBooks returnbooks = new ReturnBooks();
+        returnbooks.setVisible(true);
+        returnbooks.pack();
+        returnbooks.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_returnBooksButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -472,6 +496,7 @@ public class AdminContents extends javax.swing.JFrame {
     private javax.swing.JButton listAvailableBooksButton;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton removeFineButton;
+    private javax.swing.JButton returnBooksButton;
     private javax.swing.JPanel sidepanel;
     private javax.swing.JButton viewIssuedBooksButton;
     // End of variables declaration//GEN-END:variables

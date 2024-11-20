@@ -1,10 +1,16 @@
 package librarymanagement;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author raman
@@ -16,6 +22,84 @@ public class IssueBook extends javax.swing.JFrame {
      */
     public IssueBook() {
         initComponents();
+    }
+
+    public Boolean checkBookAvaibility(String bID) {
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+            System.out.println("Connection String is: " + con.toString());
+
+            String query = "select notissued from books where(isbn=?);";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, bID);
+            ResultSet rs = pst.executeQuery();
+            Integer available = 0;
+            while (rs.next()) {
+                available = rs.getInt("notissued");
+            }
+            pst.close();
+            con.close();
+
+            if (available > 0) {
+                return true;
+            } else {
+                return false;
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+
+        }
+        return false;
+    }
+
+    public void issueBook(String bookID, String userID, String period, String IssueDate) {
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+            System.out.println("Connection String is: " + con.toString());
+
+            String query = "insert into issuebooks(isbn, username, period, issue_date) values (?, ?, ?, ?)";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, bookID);
+            pst.setString(2, userID);
+            pst.setString(3, period);
+            pst.setString(4, IssueDate);
+            int val = pst.executeUpdate();
+            System.out.println("Query executed, rows affected: " + val);
+
+            pst.close();
+            con.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+
+        }
+    }
+
+    public void decQuantity(String bID) {
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+            System.out.println("Connection String is: " + con.toString());
+
+            String query = "update books set notissued = notissued-1 where isbn=?";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, bID);
+            int val = pst.executeUpdate();
+            System.out.println("Query executed, rows affected: " + val);
+
+            pst.close();
+            con.close();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+
+        }
     }
 
     /**
@@ -38,7 +122,7 @@ public class IssueBook extends javax.swing.JFrame {
         bookIDText = new javax.swing.JTextField();
         userIDText = new javax.swing.JTextField();
         periodText = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        issueDateText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,15 +148,20 @@ public class IssueBook extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/submit (4).png"))); // NOI18N
         jButton2.setText("Submit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
         jLabel3.setText("Period (in Days)");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
-        jLabel4.setText("Book ID");
+        jLabel4.setText("Book ISBN");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
-        jLabel5.setText("Issue Date(DD-MM-YYYY)");
+        jLabel5.setText("Issue Date(YYYY-MM-DD)");
 
         periodText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,9 +169,9 @@ public class IssueBook extends javax.swing.JFrame {
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        issueDateText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                issueDateTextActionPerformed(evt);
             }
         });
 
@@ -109,7 +198,7 @@ public class IssueBook extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(134, 134, 134)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                    .addComponent(issueDateText, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                     .addComponent(periodText)
                     .addComponent(userIDText)
                     .addComponent(bookIDText))
@@ -139,7 +228,7 @@ public class IssueBook extends javax.swing.JFrame {
                         .addComponent(periodText, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(issueDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -176,9 +265,33 @@ public class IssueBook extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_periodTextActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void issueDateTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_issueDateTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_issueDateTextActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+//        check if the book is available.
+//if available then issue book.
+//update the book quantity to -1.
+        String bookID = bookIDText.getText();
+        String userID = userIDText.getText();
+        String period = periodText.getText();
+        String issueDate = issueDateText.getText();
+
+        if (checkBookAvaibility(bookIDText.getText())) {
+            issueBook(bookID, userID, period, issueDate);
+            decQuantity(bookID);
+            JOptionPane.showMessageDialog(rootPane, "Book Issued!");
+            bookIDText.setText("");
+            userIDText.setText("");
+            periodText.setText("");
+            issueDateText.setText("");
+
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Book not Available for issue or some error occurred!");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -218,6 +331,7 @@ public class IssueBook extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bookIDText;
+    private javax.swing.JTextField issueDateText;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -226,7 +340,6 @@ public class IssueBook extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField periodText;
     private javax.swing.JTextField userIDText;
     // End of variables declaration//GEN-END:variables

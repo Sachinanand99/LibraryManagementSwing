@@ -50,7 +50,6 @@ public class UserContents extends javax.swing.JFrame {
         BookmanagementLbel = new javax.swing.JLabel();
         viewAllBooksButton = new javax.swing.JButton();
         viewAvailableBooksButton = new javax.swing.JButton();
-        returnBooksButton = new javax.swing.JButton();
         addBooktoWishlistButton = new javax.swing.JButton();
         removeBookFromWishListButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -302,16 +301,6 @@ public class UserContents extends javax.swing.JFrame {
             }
         });
 
-        returnBooksButton.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
-        returnBooksButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/return.png"))); // NOI18N
-        returnBooksButton.setText("        RETURN BOOK");
-        returnBooksButton.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        returnBooksButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                returnBooksButtonActionPerformed(evt);
-            }
-        });
-
         addBooktoWishlistButton.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
         addBooktoWishlistButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wishlist.png"))); // NOI18N
         addBooktoWishlistButton.setText("    ADD BOOK TO WISHLIST");
@@ -349,11 +338,10 @@ public class UserContents extends javax.swing.JFrame {
                 .addGroup(exploreBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(viewAllBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(viewAvailableBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(returnBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addBooktoWishlistButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(removeBookFromWishListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BookmanagementLbel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exploreBooksLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -366,17 +354,15 @@ public class UserContents extends javax.swing.JFrame {
                 .addComponent(BookmanagementLbel, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(viewAllBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(49, 49, 49)
                 .addComponent(viewAvailableBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(returnBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(44, 44, 44)
                 .addComponent(addBooktoWishlistButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
+                .addGap(49, 49, 49)
                 .addComponent(removeBookFromWishListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(54, 54, 54)
                 .addComponent(jButton1)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         getContentPane().add(exploreBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 560, 500));
@@ -536,7 +522,7 @@ public class UserContents extends javax.swing.JFrame {
 
     private void viewAllBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllBooksButtonActionPerformed
         // TODO add your handling code here:
-        VIEWALLBOOKS viewallbooks = new VIEWALLBOOKS();
+        ViewAllBooks viewallbooks = new ViewAllBooks();
         viewallbooks.setVisible(true);
         viewallbooks.pack();
         viewallbooks.setLocationRelativeTo(null);
@@ -551,15 +537,6 @@ public class UserContents extends javax.swing.JFrame {
         viewavailablebooks.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_viewAvailableBooksButtonActionPerformed
-
-    private void returnBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnBooksButtonActionPerformed
-        // TODO add your handling code here:
-        ReturnBooks returnbooks = new ReturnBooks();
-        returnbooks.setVisible(true);
-        returnbooks.pack();
-        returnbooks.setLocationRelativeTo(null);
-        this.dispose();       
-    }//GEN-LAST:event_returnBooksButtonActionPerformed
 
     private void addBooktoWishlistButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBooktoWishlistButtonActionPerformed
         // TODO add your handling code here:
@@ -634,7 +611,6 @@ public class UserContents extends javax.swing.JFrame {
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JButton logoutSideButton;
     private javax.swing.JButton removeBookFromWishListButton;
-    private javax.swing.JButton returnBooksButton;
     private javax.swing.JButton searcHBookByAuthor;
     private javax.swing.JTextField searchBookAuthor;
     private javax.swing.JButton searchBookByTitle;

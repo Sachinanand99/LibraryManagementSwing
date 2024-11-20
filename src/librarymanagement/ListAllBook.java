@@ -1,5 +1,12 @@
 package librarymanagement;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,8 +21,35 @@ public class ListAllBook extends javax.swing.JFrame {
     /**
      * Creates new form LISTALLBOOKS
      */
+    public void populateAllBooks() {
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+            String query = "select * from books;";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery(query);
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing data
+            while (rs.next()) {
+                String isbn = rs.getString("isbn");
+                String title = rs.getString("title");
+                String author = rs.getString("author");
+                String publisher = rs.getString("publisher");
+                String quantity = rs.getString("quantity");
+//add into table fields
+                Object[] row = {isbn, title, author, publisher, quantity};
+                model.addRow(row);
+
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error : " + e.getMessage());
+        }
+    }
+
     public ListAllBook() {
         initComponents();
+        populateAllBooks();
     }
 
     /**
@@ -56,7 +90,7 @@ public class ListAllBook extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Book ID", "Book Title", "Book Publisher", "Quantity"
+                "ISBN", "Title", "Author", "Publisher", "Quantity"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

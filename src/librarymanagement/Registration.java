@@ -1,15 +1,16 @@
 package librarymanagement;
 
-
-import java.awt.Color;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Arrays;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author raman
@@ -45,8 +46,8 @@ public class Registration extends javax.swing.JFrame {
         color = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        registerSubmitButton1 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        loginButton = new javax.swing.JButton();
+        accType = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
@@ -96,19 +97,19 @@ public class Registration extends javax.swing.JFrame {
         jLabel5.setText("Confirm Password");
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        registerSubmitButton1.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
-        registerSubmitButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login-avatar.png"))); // NOI18N
-        registerSubmitButton1.setText("LOGIN");
-        registerSubmitButton1.addActionListener(new java.awt.event.ActionListener() {
+        loginButton.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login-avatar.png"))); // NOI18N
+        loginButton.setText("LOGIN");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerSubmitButton1ActionPerformed(evt);
+                loginButtonActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student"}));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        accType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student"}));
+        accType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                accTypeActionPerformed(evt);
             }
         });
 
@@ -134,7 +135,7 @@ public class Registration extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(88, 88, 88)
-                            .addComponent(registerSubmitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(registerSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -154,7 +155,7 @@ public class Registration extends javax.swing.JFrame {
                                     .addComponent(passwordOne)
                                     .addComponent(passwordTwo)
                                     .addComponent(color)
-                                    .addComponent(jComboBox1, 0, 133, Short.MAX_VALUE))))))
+                                    .addComponent(accType, 0, 133, Short.MAX_VALUE))))))
                 .addContainerGap(162, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -187,11 +188,11 @@ public class Registration extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(accType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registerSubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(registerSubmitButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55))
         );
 
@@ -211,29 +212,67 @@ public class Registration extends javax.swing.JFrame {
 
     private void registerSubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerSubmitButtonActionPerformed
         // TODO add your handling code here:
-         MainPage Login = new MainPage();
-         Login.setVisible(true);
-         Login.pack();//sizes the frame (preffered size)
-         Login.setLocationRelativeTo(null);// centres the frame on the screen
-         this.dispose();
+        char[] pass1 = passwordOne.getPassword();
+        char[] pass2 = passwordTwo.getPassword();
+
+        if (!Arrays.equals(pass1, pass2)) {
+            System.out.println("Password Unmatched");
+            System.out.println(pass1);
+            System.out.println(pass2);
+            System.out.println(Arrays.equals(pass1, pass2));
+        } else {
+            try {
+                String driver = "com.mysql.cj.jdbc.Driver";
+                Class.forName(driver);
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+                System.out.println("Connection String is: " + con.toString());
+
+                String query = "INSERT INTO users (username, email, pass, color, type) VALUES (?, ?, ?, ?, ?)";
+                PreparedStatement pst = con.prepareStatement(query);
+                pst.setString(1, userName.getText());
+                pst.setString(2, email.getText());
+                pst.setString(3, new String(pass1)); 
+                pst.setString(4, color.getText());
+                pst.setString(5, (String) accType.getSelectedItem());
+                int val = pst.executeUpdate();
+                System.out.println("Query executed, rows affected: " + val);
+
+                pst.close();
+                con.close();
+
+                // After register
+                JOptionPane.showMessageDialog(rootPane, "User Registered!");
+                passwordOne.setText("");
+                passwordTwo.setText("");
+                userName.setText("");
+                email.setText("");
+                color.setText("");
+                accType.setSelectedItem("Admin");
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+
+            }
+        }
+
     }//GEN-LAST:event_registerSubmitButtonActionPerformed
 
     private void colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_colorActionPerformed
 
-    private void registerSubmitButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerSubmitButton1ActionPerformed
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
         MainPage page = new MainPage();
         page.setVisible(true);
-        page.setLocationRelativeTo(null);// centres the frame on the screen
+        page.setLocationRelativeTo(null);
         this.dispose();
 
-    }//GEN-LAST:event_registerSubmitButton1ActionPerformed
+    }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void accTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_accTypeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,9 +311,9 @@ public class Registration extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> accType;
     private javax.swing.JTextField color;
     private javax.swing.JTextField email;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -283,10 +322,10 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton loginButton;
     private javax.swing.JPasswordField passwordOne;
     private javax.swing.JPasswordField passwordTwo;
     private javax.swing.JButton registerSubmitButton;
-    private javax.swing.JButton registerSubmitButton1;
     private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
 }

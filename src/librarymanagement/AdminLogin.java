@@ -1,10 +1,16 @@
 package librarymanagement;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
+import java.sql.ResultSet;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author raman
@@ -129,22 +135,50 @@ public class AdminLogin extends javax.swing.JFrame {
 
     private void forgetPasswordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgetPasswordButtonActionPerformed
         // TODO add your handling code here:
-         RecoverPassword ForgetPassword = new RecoverPassword();
-         ForgetPassword.setVisible(true);
-         ForgetPassword.pack();//sizes the frame (preffered size)
-         ForgetPassword.setLocationRelativeTo(null);// centres the frame on the screen
-         this.dispose();
+        RecoverPassword ForgetPassword = new RecoverPassword();
+        ForgetPassword.setVisible(true);
+        ForgetPassword.pack();//sizes the frame (preffered size)
+        ForgetPassword.setLocationRelativeTo(null);// centres the frame on the screen
+        this.dispose();
     }//GEN-LAST:event_forgetPasswordButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        
-        AdminContents adminContents = new AdminContents();
-        adminContents.setVisible(true);
-        adminContents.pack();
-        adminContents.setLocationRelativeTo(null);
-        this.dispose();
-        
+        String user = userName.getText();
+        char[] pass = password.getPassword();
+
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+
+            String query = "select pass from users where (username = ? ) and (type=\"admin\");";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, user);
+
+            ResultSet rs = pst.executeQuery();
+            String dbPass = "";
+            while (rs.next()) {
+                dbPass = rs.getString("pass");
+            }
+            pst.close();
+            con.close();
+
+//after login successfull
+            if (Arrays.equals(dbPass.toCharArray(), pass) && !user.isEmpty() && pass.length > 0) {
+                UserSession.getInstance().setUserId(user);
+                AdminContents adminContents = new AdminContents();
+                adminContents.setVisible(true);
+                adminContents.pack();
+                adminContents.setLocationRelativeTo(null);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Wrong Password or user doesn't exist.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+        }
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**

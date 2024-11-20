@@ -1,10 +1,14 @@
 package librarymanagement;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author raman
@@ -179,7 +183,7 @@ public class AddBook extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-       AdminContents adm = new AdminContents();
+        AdminContents adm = new AdminContents();
         adm.setVisible(true);
         adm.setLocationRelativeTo(null);
         this.dispose();
@@ -187,6 +191,39 @@ public class AddBook extends javax.swing.JFrame {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
+
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+            System.out.println("Connection String is: " + con.toString());
+
+            String query = "insert into books(isbn, title, author, publisher, quantity, notissued) values (?, ?, ?, ?, ?, ?);";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, isbnText.getText());
+            pst.setString(2, titleText.getText());
+            pst.setString(3, authorText.getText());
+            pst.setString(4, publisherText.getText());
+            pst.setString(5, quantityText.getText());
+            pst.setString(6, quantityText.getText());
+            int val = pst.executeUpdate();
+            System.out.println("Query executed, rows affected: " + val);
+
+            pst.close();
+            con.close();
+
+            // After adding book
+            JOptionPane.showMessageDialog(rootPane, "Book Added!");
+            isbnText.setText("");
+            titleText.setText("");
+            authorText.setText("");
+            publisherText.setText("");
+            quantityText.setText("");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     /**

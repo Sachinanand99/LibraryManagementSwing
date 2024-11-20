@@ -350,12 +350,11 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="viewAllBooksButton" max="32767" attributes="0"/>
                       <Component id="viewAvailableBooksButton" max="32767" attributes="0"/>
-                      <Component id="returnBooksButton" max="32767" attributes="0"/>
                       <Component id="addBooktoWishlistButton" max="32767" attributes="0"/>
                       <Component id="removeBookFromWishListButton" max="32767" attributes="0"/>
                       <Component id="BookmanagementLbel" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="126" max="32767" attributes="0"/>
+                  <EmptySpace pref="125" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -371,17 +370,15 @@
                   <Component id="BookmanagementLbel" min="-2" pref="58" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="viewAllBooksButton" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="viewAvailableBooksButton" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  <Component id="returnBooksButton" min="-2" pref="32" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                   <Component id="addBooktoWishlistButton" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="removeBookFromWishListButton" min="-2" pref="37" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -427,21 +424,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewAvailableBooksButtonActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="returnBooksButton">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI Black" size="12" style="3"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/images/return.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="        RETURN BOOK"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="returnBooksButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="addBooktoWishlistButton">
