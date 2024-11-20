@@ -216,10 +216,7 @@ public class Registration extends javax.swing.JFrame {
         char[] pass2 = passwordTwo.getPassword();
 
         if (!Arrays.equals(pass1, pass2)) {
-            System.out.println("Password Unmatched");
-            System.out.println(pass1);
-            System.out.println(pass2);
-            System.out.println(Arrays.equals(pass1, pass2));
+            JOptionPane.showMessageDialog(rootPane, "Password not matching");
         } else {
             try {
                 String driver = "com.mysql.cj.jdbc.Driver";
