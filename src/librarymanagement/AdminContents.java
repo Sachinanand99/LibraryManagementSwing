@@ -53,7 +53,7 @@ public class AdminContents extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        sidepanel.setBackground(new java.awt.Color(0, 204, 255));
+        sidepanel.setBackground(new java.awt.Color(51, 204, 255));
 
         bookManagementSideButton.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
         bookManagementSideButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/execution.png"))); // NOI18N
@@ -128,7 +128,7 @@ public class AdminContents extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        finepanel.setBackground(new java.awt.Color(204, 204, 255));
+        finepanel.setBackground(new java.awt.Color(51, 204, 255));
 
         jLabel2.setFont(new java.awt.Font("Algerian", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -137,7 +137,7 @@ public class AdminContents extends javax.swing.JFrame {
 
         generateFineButton.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
         generateFineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add (1).png"))); // NOI18N
-        generateFineButton.setText("GENERATE FINE ");
+        generateFineButton.setText("SHOW FINE");
         generateFineButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 generateFineButtonActionPerformed(evt);
@@ -315,18 +315,12 @@ public class AdminContents extends javax.swing.JFrame {
 
     private void bookManagementSideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookManagementSideButtonActionPerformed
         // TODO add your handling code here:
-       //BOOKMANAGEMENT bookManage=new BOOKMANAGEMENT();
-        //bookManage.setVisible(true);
-        //bookManage.pack();
-        //bookManage.setLocationRelativeTo(null);
-        //this.dispose();
         
     }//GEN-LAST:event_bookManagementSideButtonActionPerformed
 
     private void fineSideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fineSideButtonActionPerformed
         // TODO add your handling code here:
-       
-        
+              
     }//GEN-LAST:event_fineSideButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -408,7 +402,7 @@ public class AdminContents extends javax.swing.JFrame {
 
     private void generateFineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateFineButtonActionPerformed
         // TODO add your handling code here:
-        GenerateFine GFINE = new GenerateFine();
+        Showfine GFINE = new Showfine();
         GFINE.setVisible(true);
         GFINE.pack();
         GFINE.setLocationRelativeTo(null);
