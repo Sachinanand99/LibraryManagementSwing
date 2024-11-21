@@ -106,7 +106,7 @@ public class Registration extends javax.swing.JFrame {
             }
         });
 
-        accType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Student"}));
+        accType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "user"}));
         accType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accTypeActionPerformed(evt);

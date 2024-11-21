@@ -444,6 +444,7 @@ public class UserContents extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
         RemoveBookFromWishList vb = new RemoveBookFromWishList();
+        vb.setLocationRelativeTo(null);
         vb.setVisible(true);
     }//GEN-LAST:event_removeBookFromWishListButtonActionPerformed
 

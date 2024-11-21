@@ -205,7 +205,7 @@ public class MainPage extends javax.swing.JFrame {
         Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
         Statement st = con.createStatement();
                 ){
-        st.executeUpdate("create table if not exists users (username varchar(20) primary key, email varchar(20), pass varchar(20), color varchar(10), type enum(\"user\",\"admin\"));");
+        st.executeUpdate("create table if not exists users (username varchar(20) primary key, email varchar(20) , pass varchar(20), color varchar(10), type enum(\"user\",\"admin\"), unique(email));");
         st.executeUpdate("create table if not exists books (isbn varchar(20) primary key, title varchar(50) not null, author varchar(20), publisher varchar(20), quantity int, notissued int)");
         st.executeUpdate("create table if not exists issuebooks(isbn varchar(20) not null, username varchar(20) not null, period int not null, issue_date date default (current_date), foreign key(isbn) references books(isbn), foreign key(username) references users(username));");
 //        st.executeUpdate("CREATE TABLE IF NOT EXISTS IssuedBooks (IssueID INT PRIMARY KEY AUTO_INCREMENT, UserID INT, BookID INT, IssueDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, DueDate DATE, ReturnDate TIMESTAMP NULL, Fine DECIMAL(5, 2) DEFAULT 0.00, FOREIGN KEY (UserID) REFERENCES Users(UserID), FOREIGN KEY (BookID) REFERENCES Books(BookID))");
