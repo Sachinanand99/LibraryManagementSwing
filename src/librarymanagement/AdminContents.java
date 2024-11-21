@@ -376,7 +376,7 @@ public class AdminContents extends javax.swing.JFrame {
 
     private void viewIssuedBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIssuedBooksButtonActionPerformed
         // TODO add your handling code here:
-        ViewIssuedBooks ViewIssuedbook = new ViewIssuedBooks();
+        ViewIssuedBooksAdmins ViewIssuedbook = new ViewIssuedBooksAdmins();
         ViewIssuedbook.setVisible(true);
         ViewIssuedbook.pack();
         ViewIssuedbook.setLocationRelativeTo(null);

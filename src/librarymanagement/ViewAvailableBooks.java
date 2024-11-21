@@ -27,7 +27,7 @@ public class ViewAvailableBooks extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
             String query = "select * from books;";
             PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery(query);
+            ResultSet rs = pst.executeQuery();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing data
             while (rs.next()) {

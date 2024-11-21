@@ -42,9 +42,6 @@ public class UserContents extends javax.swing.JFrame {
         SearchPanel = new javax.swing.JPanel();
         searchBookByTitle = new javax.swing.JButton();
         searcHBookByAuthor = new javax.swing.JButton();
-        searchBookTitle = new javax.swing.JTextField();
-        searchBookAuthor = new javax.swing.JTextField();
-        submitSearchButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         exploreBooks = new javax.swing.JPanel();
         BookmanagementLbel = new javax.swing.JLabel();
@@ -52,11 +49,10 @@ public class UserContents extends javax.swing.JFrame {
         viewAvailableBooksButton = new javax.swing.JButton();
         addBooktoWishlistButton = new javax.swing.JButton();
         removeBookFromWishListButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        viewAllBooksButton1 = new javax.swing.JButton();
         VIEWFINE = new javax.swing.JPanel();
         viewFineButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -207,13 +203,9 @@ public class UserContents extends javax.swing.JFrame {
 
         searcHBookByAuthor.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
         searcHBookByAuthor.setText("SEARCH BOOK BY AUTHOR");
-
-        submitSearchButton.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
-        submitSearchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/submit (4).png"))); // NOI18N
-        submitSearchButton.setText("SUBMIT");
-        submitSearchButton.addActionListener(new java.awt.event.ActionListener() {
+        searcHBookByAuthor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitSearchButtonActionPerformed(evt);
+                searcHBookByAuthorActionPerformed(evt);
             }
         });
 
@@ -227,43 +219,27 @@ public class UserContents extends javax.swing.JFrame {
         SearchPanelLayout.setHorizontalGroup(
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addComponent(searchBookByTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchBookTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(200, 200, 200)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(SearchPanelLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(searcHBookByAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(searchBookAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50))
-            .addGroup(SearchPanelLayout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(submitSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69))
+                        .addGap(140, 140, 140)
+                        .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(searchBookByTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searcHBookByAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(50, 200, Short.MAX_VALUE))
         );
         SearchPanelLayout.setVerticalGroup(
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SearchPanelLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75)
+                .addComponent(searchBookByTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
-                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchBookByTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBookTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searcHBookByAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchBookAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67)
-                .addComponent(submitSearchButton)
-                .addGap(32, 32, 32))
+                .addComponent(searcHBookByAuthor, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         getContentPane().add(SearchPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 560, 500));
@@ -320,12 +296,13 @@ public class UserContents extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back (1).png"))); // NOI18N
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        viewAllBooksButton1.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
+        viewAllBooksButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eye.png"))); // NOI18N
+        viewAllBooksButton1.setText("    VIEW ISSUED BOOKS"); // NOI18N
+        viewAllBooksButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        viewAllBooksButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                viewAllBooksButton1ActionPerformed(evt);
             }
         });
 
@@ -340,12 +317,9 @@ public class UserContents extends javax.swing.JFrame {
                     .addComponent(viewAvailableBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(addBooktoWishlistButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(removeBookFromWishListButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BookmanagementLbel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BookmanagementLbel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(viewAllBooksButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(125, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, exploreBooksLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(23, 23, 23))
         );
         exploreBooksLayout.setVerticalGroup(
             exploreBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -360,9 +334,9 @@ public class UserContents extends javax.swing.JFrame {
                 .addComponent(addBooktoWishlistButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(removeBookFromWishListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54)
-                .addComponent(jButton1)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(viewAllBooksButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         getContentPane().add(exploreBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 560, 500));
@@ -386,10 +360,6 @@ public class UserContents extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banking.png"))); // NOI18N
         jLabel4.setText("FINES");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back (1).png"))); // NOI18N
-        jButton2.setText("BACK");
-
         javax.swing.GroupLayout VIEWFINELayout = new javax.swing.GroupLayout(VIEWFINE);
         VIEWFINE.setLayout(VIEWFINELayout);
         VIEWFINELayout.setHorizontalGroup(
@@ -398,10 +368,6 @@ public class UserContents extends javax.swing.JFrame {
                 .addGap(225, 225, 225)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(228, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VIEWFINELayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(52, 52, 52))
             .addGroup(VIEWFINELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(VIEWFINELayout.createSequentialGroup()
                     .addGap(170, 170, 170)
@@ -413,9 +379,7 @@ public class UserContents extends javax.swing.JFrame {
             .addGroup(VIEWFINELayout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 279, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76))
+                .addContainerGap(391, Short.MAX_VALUE))
             .addGroup(VIEWFINELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(VIEWFINELayout.createSequentialGroup()
                     .addGap(239, 239, 239)
@@ -438,6 +402,10 @@ public class UserContents extends javax.swing.JFrame {
 
     private void searchBookByTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBookByTitleActionPerformed
         // TODO add your handling code here:
+        SearchBookByTitle title = new SearchBookByTitle();
+        title.setVisible(true);
+        title.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_searchBookByTitleActionPerformed
 
     private void removeBookFromWishListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBookFromWishListButtonActionPerformed
@@ -508,10 +476,6 @@ public class UserContents extends javax.swing.JFrame {
         VIEWFINE.setVisible(true);
     }//GEN-LAST:event_finesSideButtonActionPerformed
 
-    private void submitSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitSearchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_submitSearchButtonActionPerformed
-
     private void viewFineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFineButtonActionPerformed
         // TODO add your handling code here:
         CheckFine checkfine = new CheckFine();
@@ -548,15 +512,22 @@ public class UserContents extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_addBooktoWishlistButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void searcHBookByAuthorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searcHBookByAuthorActionPerformed
         // TODO add your handling code here:
-        UserContents usercontents=new UserContents();
-        usercontents.setVisible(true);
-        usercontents.pack();
-         usercontents.setLocationRelativeTo(null);
-         this.dispose();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        SearchBookByAuthor auth = new SearchBookByAuthor();
+        auth.setVisible(true);
+        auth.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_searcHBookByAuthorActionPerformed
+
+    private void viewAllBooksButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllBooksButton1ActionPerformed
+        // TODO add your handling code here:
+        ViewIssuedBooksUser vieissuedbooks = new ViewIssuedBooksUser();
+        vieissuedbooks.setVisible(true);
+        vieissuedbooks.pack();
+        vieissuedbooks.setLocationRelativeTo(null);
+        this.dispose();  
+    }//GEN-LAST:event_viewAllBooksButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -603,8 +574,6 @@ public class UserContents extends javax.swing.JFrame {
     private javax.swing.JPanel exploreBooks;
     private javax.swing.JButton exploreBooksButton;
     private javax.swing.JButton finesSideButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -613,12 +582,10 @@ public class UserContents extends javax.swing.JFrame {
     private javax.swing.JButton logoutSideButton;
     private javax.swing.JButton removeBookFromWishListButton;
     private javax.swing.JButton searcHBookByAuthor;
-    private javax.swing.JTextField searchBookAuthor;
     private javax.swing.JButton searchBookByTitle;
-    private javax.swing.JTextField searchBookTitle;
     private javax.swing.JButton searchSideButton;
-    private javax.swing.JButton submitSearchButton;
     private javax.swing.JButton viewAllBooksButton;
+    private javax.swing.JButton viewAllBooksButton1;
     private javax.swing.JButton viewAvailableBooksButton;
     private javax.swing.JButton viewFineButton;
     // End of variables declaration//GEN-END:variables

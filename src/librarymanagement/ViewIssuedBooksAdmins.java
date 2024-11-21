@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author raman
  */
-public class ViewIssuedBooks extends javax.swing.JFrame {
+public class ViewIssuedBooksAdmins extends javax.swing.JFrame {
 
     /**
      * Creates new form VIEWISSUEDBOOKS
@@ -45,7 +45,7 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error : " + e.getMessage());
         }
     }
-    public ViewIssuedBooks() {
+    public ViewIssuedBooksAdmins() {
         initComponents();
         populateIssuedBooks();
     }
@@ -162,21 +162,23 @@ public class ViewIssuedBooks extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewIssuedBooks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewIssuedBooksAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewIssuedBooks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewIssuedBooksAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewIssuedBooks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewIssuedBooksAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewIssuedBooks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewIssuedBooksAdmins.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewIssuedBooks().setVisible(true);
+                new ViewIssuedBooksAdmins().setVisible(true);
             }
         });
     }
