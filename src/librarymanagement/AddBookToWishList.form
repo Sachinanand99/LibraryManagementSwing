@@ -123,7 +123,7 @@
                   <Font name="Segoe UI Black" size="12" style="3"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="Book ID"/>
+                <Property name="text" type="java.lang.String" value="Book ISBN"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="bookIDText">
@@ -180,15 +180,21 @@
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="4">
-                        <Column editable="true" title="Book ID" type="java.lang.Object"/>
-                        <Column editable="true" title="Book Title" type="java.lang.Object"/>
-                        <Column editable="true" title="Book Publisher" type="java.lang.Object"/>
-                        <Column editable="true" title="Book Author" type="java.lang.Object"/>
+                      <Table columnCount="5" rowCount="4">
+                        <Column editable="true" title="ISBN" type="java.lang.Object"/>
+                        <Column editable="true" title="Title" type="java.lang.Object"/>
+                        <Column editable="true" title="Author" type="java.lang.Object"/>
+                        <Column editable="true" title="Publisher" type="java.lang.Object"/>
+                        <Column editable="true" title="Availability" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>

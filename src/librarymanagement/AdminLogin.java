@@ -155,7 +155,7 @@ public class AdminLogin extends javax.swing.JFrame {
             String query = "select pass from users where (username = ? ) and (type=\"admin\");";
             PreparedStatement pst = con.prepareStatement(query);
             pst.setString(1, user);
-
+            
             ResultSet rs = pst.executeQuery();
             String dbPass = "";
             while (rs.next()) {

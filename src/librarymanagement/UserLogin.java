@@ -176,6 +176,8 @@ public class UserLogin extends javax.swing.JFrame {
 //after login successfull
             if (Arrays.equals(dbPass.toCharArray(), pass) && !user.isEmpty() && pass.length > 0) {
                 UserSession.getInstance().setUserId(user);
+                System.out.println((UserSession.getInstance().getUserId()));
+
                 UserContents usercontents = new UserContents();
                 usercontents.setVisible(true);
                 usercontents.pack();

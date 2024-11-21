@@ -1,5 +1,12 @@
 package librarymanagement;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,6 +22,95 @@ public class AddBookToWishList extends javax.swing.JFrame {
      */
     public AddBookToWishList() {
         initComponents();
+        String userID = UserSession.getInstance().getUserId();
+
+        populateTable(userID);
+    }
+
+    public Boolean checkIfBookExists() {
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+
+            String query = "select * from books where (isbn = ?);";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, bookIDText.getText());
+
+            ResultSet rs = pst.executeQuery();
+            String is = "";
+            while (rs.next()) {
+                is = rs.getString("isbn");
+            }
+            pst.close();
+            con.close();
+            if (is.equalsIgnoreCase(bookIDText.getText()));
+            return true;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+            return false;
+        }
+    }
+
+    public void populateTable(String userID) {
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+
+            String query = "select * from books where (isbn=(select isbn from wishlist where (username= ? )));";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, userID);
+
+            System.out.println(pst);
+
+            ResultSet rs = pst.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.setRowCount(0); // Clear existing data
+            while (rs.next()) {
+                String isbn = rs.getString("isbn");
+                String title = rs.getString("title");
+                String author = rs.getString("author");
+                String publisher = rs.getString("publisher");
+                Integer quantity = rs.getInt("notissued");
+                String aval = "not available";
+//add into table fields
+                if (quantity > 0) {
+                    aval = "available";
+                }
+                Object[] row = {isbn, title, author, publisher, aval};
+                model.addRow(row);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error : " + e.getMessage());
+        }
+    }
+
+    public void addBookWishlist() {
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+
+            String query = "insert into wishlist(isbn, username) values (?, ?);";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, bookIDText.getText());
+            pst.setString(2, UserSession.getInstance().getUserId());
+
+            Integer val = pst.executeUpdate();
+            System.out.println("Added " + val + "row");
+            pst.close();
+            con.close();
+
+            JOptionPane.showMessageDialog(rootPane, "Book Added to Wishlist");
+            String userID = UserSession.getInstance().getUserId();
+            bookIDText.setText("");
+
+            populateTable(userID);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+        }
     }
 
     /**
@@ -51,7 +147,7 @@ public class AddBookToWishList extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Book ID");
+        jLabel2.setText("Book ISBN");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -80,13 +176,13 @@ public class AddBookToWishList extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Book ID", "Book Title", "Book Publisher", "Book Author"
+                "ISBN", "Title", "Author", "Publisher", "Availability"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -176,6 +272,15 @@ public class AddBookToWishList extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        //        1. check if book exists
+//2. then add wishlist book
+//otherwise error
+        if (checkIfBookExists()) {
+            addBookWishlist();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Book doesn't exists.");
+
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
