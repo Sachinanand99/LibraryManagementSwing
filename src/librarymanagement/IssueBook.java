@@ -70,10 +70,17 @@ public class IssueBook extends javax.swing.JFrame {
             pst.setString(4, IssueDate);
             int val = pst.executeUpdate();
             System.out.println("Query executed, rows affected: " + val);
-
+            
             pst.close();
             con.close();
-
+            
+            decQuantity(bookID);
+            
+            JOptionPane.showMessageDialog(rootPane, "Book Issued!");
+            bookIDText.setText("");
+            userIDText.setText("");
+            periodText.setText("");
+            issueDateText.setText("");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
 
@@ -281,12 +288,7 @@ public class IssueBook extends javax.swing.JFrame {
 
         if (checkBookAvaibility(bookIDText.getText())) {
             issueBook(bookID, userID, period, issueDate);
-            decQuantity(bookID);
-            JOptionPane.showMessageDialog(rootPane, "Book Issued!");
-            bookIDText.setText("");
-            userIDText.setText("");
-            periodText.setText("");
-            issueDateText.setText("");
+            
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Book not Available for issue or some error occurred!");

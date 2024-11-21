@@ -16,7 +16,7 @@ public class AdminContents extends javax.swing.JFrame {
      */
     public AdminContents() {
         initComponents();
-        bookmanagementpanel.setVisible(false);
+        bookmanagementpanel.setVisible(true);
         finepanel.setVisible(false);
         adminpage.setVisible(true);
     }
@@ -277,7 +277,7 @@ public class AdminContents extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
             .addGroup(bookmanagementpanelLayout.createSequentialGroup()
                 .addGap(139, 139, 139)
-                .addComponent(returnBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(returnBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bookmanagementpanelLayout.setVerticalGroup(

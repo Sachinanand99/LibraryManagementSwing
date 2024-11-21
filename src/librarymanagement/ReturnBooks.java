@@ -22,6 +22,33 @@ public class ReturnBooks extends javax.swing.JFrame {
         initComponents();
     }
 
+    
+    public void incQuantity(String bID) {
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
+            System.out.println("Connection String is: " + con.toString());
+
+            String query = "update books set notissued = notissued+1 where isbn=?";
+            PreparedStatement pst = con.prepareStatement(query);
+            pst.setString(1, bID);
+            int val = pst.executeUpdate();
+            System.out.println("Query executed, rows affected: " + val);
+
+            pst.close();
+            con.close();
+            
+            // After returning book
+            JOptionPane.showMessageDialog(rootPane, "Book Returned!");
+            bookIDText.setText("");
+            userIDText.setText("");
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
+
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -139,15 +166,18 @@ public class ReturnBooks extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        UserContents userContents = new UserContents();
-        userContents.setVisible(true);
-        userContents.pack();
-        userContents.setLocationRelativeTo(null);
+        AdminContents admin = new AdminContents();
+        admin.setVisible(true);
+        admin.pack();
+        admin.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+//        1. return book remove data from issued books
+//2. book quantity + 1
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
             Class.forName(driver);
@@ -163,11 +193,9 @@ public class ReturnBooks extends javax.swing.JFrame {
 
             pst.close();
             con.close();
+           incQuantity(bookIDText.getText());
 
-            // After returning book
-            JOptionPane.showMessageDialog(rootPane, "Book Returned!");
-            bookIDText.setText("");
-            userIDText.setText("");
+            
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Error Occurred : " + e.getMessage());
