@@ -43,7 +43,9 @@ public class MainPage extends javax.swing.JFrame {
         userLoginButton = new javax.swing.JButton();
         registerButton = new javax.swing.JButton();
         adminLoginButton = new javax.swing.JButton();
-        initDBButton = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 0, 0));
@@ -98,13 +100,6 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        initDBButton.setText("Setup Database");
-        initDBButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                initDBButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -116,35 +111,42 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(adminLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(299, 299, 299)
-                        .addComponent(userLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(156, 156, 156)
-                        .addComponent(initDBButton))
+                        .addComponent(userLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(339, 339, 339)
                         .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(206, 206, 206)))
-                .addContainerGap(96, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(300, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(57, 57, 57)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(42, 42, 42)
                 .addComponent(adminLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(initDBButton)))
+                .addComponent(userLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(registerButton)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("Settings");
+
+        jMenuItem1.setText("Setup Database");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,7 +157,7 @@ public class MainPage extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -193,7 +195,7 @@ public class MainPage extends javax.swing.JFrame {
          this.dispose();
     }//GEN-LAST:event_registerButtonActionPerformed
 
-    private void initDBButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initDBButtonActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         String driver = "com.mysql.cj.jdbc.Driver";
 
@@ -209,7 +211,6 @@ public class MainPage extends javax.swing.JFrame {
         st.executeUpdate("create table if not exists books (isbn varchar(20) primary key, title varchar(50) not null, author varchar(20), publisher varchar(20), quantity int, notissued int)");
         st.executeUpdate("create table if not exists issuebooks(isbn varchar(20) not null, username varchar(20) not null, period int not null, issue_date date default (current_date), foreign key(isbn) references books(isbn), foreign key(username) references users(username));");
         st.executeUpdate("create table if not exists wishlist(username varchar(20) not null, isbn varchar(20) not null, foreign key(username) references users(username), foreign key(isbn) references books(isbn));");
-//        st.executeUpdate("CREATE TABLE IF NOT EXISTS Fines (FineID INT PRIMARY KEY AUTO_INCREMENT, UserID INT, IssueID INT, Amount DECIMAL(5, 2) NOT NULL, Paid BOOLEAN DEFAULT FALSE, FineDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (UserID) REFERENCES Users(UserID), FOREIGN KEY (IssueID) REFERENCES IssuedBooks(IssueID))");
         JOptionPane.showMessageDialog(rootPane, "Tables created successfully");
         }
         }
@@ -218,7 +219,7 @@ public class MainPage extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Error creating tables"+ e.getMessage());
 
         }
-    }//GEN-LAST:event_initDBButtonActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,8 +265,10 @@ public class MainPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adminLoginButton;
-    private javax.swing.JButton initDBButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton registerButton;
     private javax.swing.JButton userLoginButton;

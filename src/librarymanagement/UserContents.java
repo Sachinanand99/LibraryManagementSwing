@@ -453,6 +453,7 @@ public class UserContents extends javax.swing.JFrame {
 
     private void logoutSideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutSideButtonActionPerformed
         // TODO add your handling code here:
+        UserSession.getInstance().clrUserID();
         MainPage MainPage=new MainPage();
         MainPage.setVisible(true);
         MainPage.pack();

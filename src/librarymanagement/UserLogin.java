@@ -41,6 +41,7 @@ public class UserLogin extends javax.swing.JFrame {
         forgetPasswordButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        loginButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -84,6 +85,15 @@ public class UserLogin extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login-avatar.png"))); // NOI18N
         jLabel1.setText("USER LOGIN ");
 
+        loginButton1.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
+        loginButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back (1).png"))); // NOI18N
+        loginButton1.setText("Back");
+        loginButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,6 +119,10 @@ public class UserLogin extends javax.swing.JFrame {
                                     .addComponent(userName, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
                                     .addComponent(password))))))
                 .addContainerGap(159, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(loginButton1)
+                .addGap(54, 54, 54))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,7 +143,9 @@ public class UserLogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(forgetPasswordButton)
                     .addComponent(loginButton))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(loginButton1)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,6 +218,14 @@ public class UserLogin extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_forgetPasswordButtonActionPerformed
 
+    private void loginButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButton1ActionPerformed
+        // TODO add your handling code here:
+        MainPage mainp = new MainPage();
+        mainp.setVisible(true);
+        mainp.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_loginButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,6 +269,7 @@ public class UserLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginButton;
+    private javax.swing.JButton loginButton1;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables

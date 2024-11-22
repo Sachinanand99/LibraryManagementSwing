@@ -177,7 +177,6 @@ public class ReturnBooks extends javax.swing.JFrame {
         // TODO add your handling code here:
         
 //        1. return book remove data from issued books
-//2. book quantity + 1
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
             Class.forName(driver);
@@ -193,6 +192,7 @@ public class ReturnBooks extends javax.swing.JFrame {
 
             pst.close();
             con.close();
+            //2. book quantity + 1
            incQuantity(bookIDText.getText());
 
             

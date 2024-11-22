@@ -36,10 +36,6 @@ public class AdminContents extends javax.swing.JFrame {
         fineSideButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        finepanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        generateFineButton = new javax.swing.JButton();
-        removeFineButton = new javax.swing.JButton();
         bookmanagementpanel = new javax.swing.JPanel();
         addBookButton = new javax.swing.JButton();
         deleteBookButton = new javax.swing.JButton();
@@ -49,6 +45,11 @@ public class AdminContents extends javax.swing.JFrame {
         listAvailableBooksButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         returnBooksButton = new javax.swing.JButton();
+        deleteBookButton1 = new javax.swing.JButton();
+        finepanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        generateFineButton = new javax.swing.JButton();
+        removeFineButton = new javax.swing.JButton();
 
         adminpage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -129,56 +130,6 @@ public class AdminContents extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        finepanel.setBackground(new java.awt.Color(51, 204, 255));
-
-        jLabel2.setFont(new java.awt.Font("Algerian", 0, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banking.png"))); // NOI18N
-        jLabel2.setText("MANAGE FINES");
-
-        generateFineButton.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
-        generateFineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add (1).png"))); // NOI18N
-        generateFineButton.setText("SHOW FINE");
-        generateFineButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generateFineButtonActionPerformed(evt);
-            }
-        });
-
-        removeFineButton.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
-        removeFineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash-bin.png"))); // NOI18N
-        removeFineButton.setText("    REMOVE FINE");
-        removeFineButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                removeFineButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout finepanelLayout = new javax.swing.GroupLayout(finepanel);
-        finepanel.setLayout(finepanelLayout);
-        finepanelLayout.setHorizontalGroup(
-            finepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(finepanelLayout.createSequentialGroup()
-                .addGap(140, 140, 140)
-                .addGroup(finepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(finepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(removeFineButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(generateFineButton, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
-                .addContainerGap(162, Short.MAX_VALUE))
-        );
-        finepanelLayout.setVerticalGroup(
-            finepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(finepanelLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
-                .addComponent(generateFineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(removeFineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(148, Short.MAX_VALUE))
-        );
-
         bookmanagementpanel.setBackground(new java.awt.Color(0, 204, 255));
 
         addBookButton.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
@@ -254,31 +205,45 @@ public class AdminContents extends javax.swing.JFrame {
             }
         });
 
+        deleteBookButton1.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
+        deleteBookButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete (1).png"))); // NOI18N
+        deleteBookButton1.setText("UPDATE BOOK");
+        deleteBookButton1.setPreferredSize(new java.awt.Dimension(164, 23));
+        deleteBookButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBookButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout bookmanagementpanelLayout = new javax.swing.GroupLayout(bookmanagementpanel);
         bookmanagementpanel.setLayout(bookmanagementpanelLayout);
         bookmanagementpanelLayout.setHorizontalGroup(
             bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(bookmanagementpanelLayout.createSequentialGroup()
-                .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bookmanagementpanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bookmanagementpanelLayout.createSequentialGroup()
+                .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bookmanagementpanelLayout.createSequentialGroup()
                         .addGap(160, 160, 160)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bookmanagementpanelLayout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bookmanagementpanelLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                            .addComponent(deleteBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(issueBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(listAllBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(listAvailableBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(viewIssuedBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(viewIssuedBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(listAvailableBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(deleteBookButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(addBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bookmanagementpanelLayout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(listAllBooksButton, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                                    .addComponent(issueBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(deleteBookButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(bookmanagementpanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(returnBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(20, 20, 20))
-            .addGroup(bookmanagementpanelLayout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addComponent(returnBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bookmanagementpanelLayout.setVerticalGroup(
             bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,18 +253,69 @@ public class AdminContents extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewIssuedBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
-                .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(listAllBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
+                .addGap(58, 58, 58)
+                .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteBookButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(listAllBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(59, 59, 59)
                 .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(listAvailableBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(issueBookButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addComponent(returnBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
+                .addGroup(bookmanagementpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(returnBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewIssuedBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+
+        finepanel.setBackground(new java.awt.Color(51, 204, 255));
+
+        jLabel2.setFont(new java.awt.Font("Algerian", 0, 14)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banking.png"))); // NOI18N
+        jLabel2.setText("MANAGE FINES");
+
+        generateFineButton.setFont(new java.awt.Font("Segoe UI Black", 3, 12)); // NOI18N
+        generateFineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add (1).png"))); // NOI18N
+        generateFineButton.setText("SHOW FINE");
+        generateFineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generateFineButtonActionPerformed(evt);
+            }
+        });
+
+        removeFineButton.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
+        removeFineButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/trash-bin.png"))); // NOI18N
+        removeFineButton.setText("    REMOVE FINE");
+        removeFineButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeFineButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout finepanelLayout = new javax.swing.GroupLayout(finepanel);
+        finepanel.setLayout(finepanelLayout);
+        finepanelLayout.setHorizontalGroup(
+            finepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(finepanelLayout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addGroup(finepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(removeFineButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(generateFineButton, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
+        );
+        finepanelLayout.setVerticalGroup(
+            finepanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(finepanelLayout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(generateFineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
+                .addComponent(removeFineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -445,6 +461,15 @@ public class AdminContents extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_returnBooksButtonActionPerformed
 
+    private void deleteBookButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBookButton1ActionPerformed
+        // TODO add your handling code here:
+        UpdateBook updBook = new UpdateBook();
+        updBook.setVisible(true);
+        updBook.pack();
+        updBook.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_deleteBookButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -487,6 +512,7 @@ public class AdminContents extends javax.swing.JFrame {
     private javax.swing.JButton bookManagementSideButton;
     private javax.swing.JPanel bookmanagementpanel;
     private javax.swing.JButton deleteBookButton;
+    private javax.swing.JButton deleteBookButton1;
     private javax.swing.JButton fineSideButton;
     private javax.swing.JPanel finepanel;
     private javax.swing.JButton generateFineButton;

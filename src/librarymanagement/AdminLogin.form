@@ -63,10 +63,18 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="forgetPasswordButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                  <Component id="loginButton" min="-2" pref="146" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="forgetPasswordButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
+                          <Component id="loginButton" min="-2" pref="146" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="196" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="loginButton1" min="-2" pref="146" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -85,12 +93,14 @@
                       <Component id="jLabel3" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                       <Component id="password" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="120" max="32767" attributes="0"/>
+                  <EmptySpace pref="112" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="forgetPasswordButton" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="loginButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="loginButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -154,6 +164,20 @@
             </Property>
             <Property name="text" type="java.lang.String" value="ADMIN LOGIN"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="loginButton1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI Black" size="12" style="3"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/back (1).png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Back"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginButton1ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -99,7 +99,7 @@ public class IssueBook extends javax.swing.JFrame {
             pst.setString(1, bID);
             int val = pst.executeUpdate();
             System.out.println("Query executed, rows affected: " + val);
-
+            
             pst.close();
             con.close();
 
