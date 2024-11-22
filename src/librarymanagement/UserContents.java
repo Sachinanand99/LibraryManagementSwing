@@ -19,7 +19,6 @@ public class UserContents extends javax.swing.JFrame {
         MainPanel.setVisible(true);
         SearchPanel.setVisible(false);
         exploreBooks.setVisible(false);
-        VIEWFINE.setVisible(false);      
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,7 +33,6 @@ public class UserContents extends javax.swing.JFrame {
         SidePanel = new javax.swing.JPanel();
         searchSideButton = new javax.swing.JButton();
         exploreBooksButton = new javax.swing.JButton();
-        finesSideButton = new javax.swing.JButton();
         logoutSideButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         MainPanel = new javax.swing.JPanel();
@@ -50,9 +48,6 @@ public class UserContents extends javax.swing.JFrame {
         addBooktoWishlistButton = new javax.swing.JButton();
         removeBookFromWishListButton = new javax.swing.JButton();
         viewAllBooksButton1 = new javax.swing.JButton();
-        VIEWFINE = new javax.swing.JPanel();
-        viewFineButton = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,20 +87,6 @@ public class UserContents extends javax.swing.JFrame {
             }
         });
 
-        finesSideButton.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
-        finesSideButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banking.png"))); // NOI18N
-        finesSideButton.setText("FINES");
-        finesSideButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                finesSideButtonMouseClicked(evt);
-            }
-        });
-        finesSideButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finesSideButtonActionPerformed(evt);
-            }
-        });
-
         logoutSideButton.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
         logoutSideButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout (1).png"))); // NOI18N
         logoutSideButton.setText("LOG OUT");
@@ -124,7 +105,7 @@ public class UserContents extends javax.swing.JFrame {
         SidePanelLayout.setHorizontalGroup(
             SidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SidePanelLayout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(24, 24, 24))
             .addGroup(SidePanelLayout.createSequentialGroup()
@@ -132,7 +113,6 @@ public class UserContents extends javax.swing.JFrame {
                     .addGroup(SidePanelLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(SidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(finesSideButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(exploreBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(searchSideButton, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(SidePanelLayout.createSequentialGroup()
@@ -145,13 +125,11 @@ public class UserContents extends javax.swing.JFrame {
             .addGroup(SidePanelLayout.createSequentialGroup()
                 .addGap(72, 72, 72)
                 .addComponent(jLabel2)
-                .addGap(54, 54, 54)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(searchSideButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(62, 62, 62)
                 .addComponent(exploreBooksButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addComponent(finesSideButton)
-                .addGap(37, 37, 37)
+                .addGap(77, 77, 77)
                 .addComponent(logoutSideButton)
                 .addGap(25, 25, 25))
         );
@@ -341,54 +319,6 @@ public class UserContents extends javax.swing.JFrame {
 
         getContentPane().add(exploreBooks, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 560, 500));
 
-        VIEWFINE.setBackground(new java.awt.Color(51, 204, 255));
-        VIEWFINE.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                VIEWFINEMouseClicked(evt);
-            }
-        });
-
-        viewFineButton.setFont(new java.awt.Font("Segoe UI Black", 2, 12)); // NOI18N
-        viewFineButton.setText("View Fine");
-        viewFineButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewFineButtonActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Algerian", 0, 18)); // NOI18N
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banking.png"))); // NOI18N
-        jLabel4.setText("FINES");
-
-        javax.swing.GroupLayout VIEWFINELayout = new javax.swing.GroupLayout(VIEWFINE);
-        VIEWFINE.setLayout(VIEWFINELayout);
-        VIEWFINELayout.setHorizontalGroup(
-            VIEWFINELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VIEWFINELayout.createSequentialGroup()
-                .addGap(225, 225, 225)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(228, Short.MAX_VALUE))
-            .addGroup(VIEWFINELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(VIEWFINELayout.createSequentialGroup()
-                    .addGap(170, 170, 170)
-                    .addComponent(viewFineButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(170, 170, 170)))
-        );
-        VIEWFINELayout.setVerticalGroup(
-            VIEWFINELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(VIEWFINELayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(391, Short.MAX_VALUE))
-            .addGroup(VIEWFINELayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(VIEWFINELayout.createSequentialGroup()
-                    .addGap(239, 239, 239)
-                    .addComponent(viewFineButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(214, Short.MAX_VALUE)))
-        );
-
-        getContentPane().add(VIEWFINE, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 560, -1));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -397,7 +327,6 @@ public class UserContents extends javax.swing.JFrame {
         MainPanel.setVisible(false);
         SearchPanel.setVisible(true);
         exploreBooks.setVisible(false);
-        VIEWFINE.setVisible(false);
     }//GEN-LAST:event_searchSideButtonActionPerformed
 
     private void searchBookByTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBookByTitleActionPerformed
@@ -426,11 +355,6 @@ public class UserContents extends javax.swing.JFrame {
 //        
     }//GEN-LAST:event_exploreBooksButtonMouseClicked
 
-    private void finesSideButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finesSideButtonMouseClicked
-        // TODO add your handling code here:
-//        
-    }//GEN-LAST:event_finesSideButtonMouseClicked
-
     private void SidePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SidePanelMouseClicked
     
     }//GEN-LAST:event_SidePanelMouseClicked
@@ -447,10 +371,6 @@ public class UserContents extends javax.swing.JFrame {
         
     }//GEN-LAST:event_exploreBooksMouseClicked
 
-    private void VIEWFINEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VIEWFINEMouseClicked
-        // TODO add your handling code here:   
-    }//GEN-LAST:event_VIEWFINEMouseClicked
-
     private void logoutSideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutSideButtonActionPerformed
         // TODO add your handling code here:
         UserSession.getInstance().clrUserID();
@@ -466,25 +386,7 @@ public class UserContents extends javax.swing.JFrame {
         MainPanel.setVisible(false);
         SearchPanel.setVisible(false);
         exploreBooks.setVisible(true);
-        VIEWFINE.setVisible(false);
     }//GEN-LAST:event_exploreBooksButtonActionPerformed
-
-    private void finesSideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finesSideButtonActionPerformed
-        // TODO add your handling code here:
-        MainPanel.setVisible(false);
-        SearchPanel.setVisible(false);
-        exploreBooks.setVisible(false);
-        VIEWFINE.setVisible(true);
-    }//GEN-LAST:event_finesSideButtonActionPerformed
-
-    private void viewFineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewFineButtonActionPerformed
-        // TODO add your handling code here:
-        CheckFine checkfine = new CheckFine();
-        checkfine.setVisible(true);
-        checkfine.pack();
-        checkfine.setLocationRelativeTo(null);
-        this.dispose();
-    }//GEN-LAST:event_viewFineButtonActionPerformed
 
     private void viewAllBooksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAllBooksButtonActionPerformed
         // TODO add your handling code here:
@@ -570,15 +472,12 @@ public class UserContents extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     private javax.swing.JPanel SearchPanel;
     private javax.swing.JPanel SidePanel;
-    private javax.swing.JPanel VIEWFINE;
     private javax.swing.JButton addBooktoWishlistButton;
     private javax.swing.JPanel exploreBooks;
     private javax.swing.JButton exploreBooksButton;
-    private javax.swing.JButton finesSideButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JButton logoutSideButton;
     private javax.swing.JButton removeBookFromWishListButton;
@@ -588,6 +487,5 @@ public class UserContents extends javax.swing.JFrame {
     private javax.swing.JButton viewAllBooksButton;
     private javax.swing.JButton viewAllBooksButton1;
     private javax.swing.JButton viewAvailableBooksButton;
-    private javax.swing.JButton viewFineButton;
     // End of variables declaration//GEN-END:variables
 }
