@@ -25,34 +25,38 @@ public class RemoveBookFromWishList extends javax.swing.JFrame {
         populateTable(UserSession.getInstance().getUserId());
     }
     
-    public void populateTable(String userID) {
-        try {
+    public void populateTable(String userID) {try {
             String driver = "com.mysql.cj.jdbc.Driver";
             Class.forName(driver);
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/librarymanagement", "root", "root");
-            
-            String query = "select * from books where (isbn=(select isbn from wishlist where (username= ? )));";
-            PreparedStatement pst = con.prepareStatement(query);
-            pst.setString(1, userID);
-            
-            System.out.println(pst);
-            
-            ResultSet rs = pst.executeQuery();
+
+            String query1 = "select isbn from wishlist where (username= ? )";
+            PreparedStatement pst1 = con.prepareStatement(query1);
+            pst1.setString(1, userID);
+            ResultSet rs = pst1.executeQuery();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             model.setRowCount(0); // Clear existing data
+
             while (rs.next()) {
-                String isbn = rs.getString("isbn");
-                String title = rs.getString("title");
-                String author = rs.getString("author");
-                String publisher = rs.getString("publisher");
-                Integer quantity = rs.getInt("notissued");
-                String aval = "not available";
+                String query2 = "select * from books where (isbn=?);";
+                PreparedStatement pst2 = con.prepareStatement(query2);
+                pst2.setString(1, rs.getString("isbn"));
+                ResultSet rs2 = pst2.executeQuery();
+
+                while (rs2.next()) {
+                    String isbn = rs2.getString("isbn");
+                    String title = rs2.getString("title");
+                    String author = rs2.getString("author");
+                    String publisher = rs2.getString("publisher");
+                    Integer quantity = rs2.getInt("notissued");
+                    String aval = "not available";
 //add into table fields
-                if (quantity > 0) {
-                    aval = "available";
+                    if (quantity > 0) {
+                        aval = "available";
+                    }
+                    Object[] row = {isbn, title, author, publisher, aval};
+                    model.addRow(row);
                 }
-                Object[] row = {isbn, title, author, publisher, aval};
-                model.addRow(row);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Error : " + e.getMessage());
